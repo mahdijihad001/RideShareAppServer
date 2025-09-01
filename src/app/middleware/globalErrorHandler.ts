@@ -2,6 +2,7 @@ import { NextFunction, Request, Response } from "express";
 import { envVars } from "../config/env";
 import { AppError } from "../utils/AppError";
 import { ZodError } from "zod";
+import mongoose from "mongoose";
 
 export const globalErrorHanle = (err: any, req: Request, res: Response, next: NextFunction) => {
 
@@ -21,6 +22,19 @@ export const globalErrorHanle = (err: any, req: Request, res: Response, next: Ne
 
         message = "Zod Error";
         stautsCode = 400;
+    }
+    else if (err instanceof mongoose.Error.ValidationError) {
+        stautsCode = 400;
+
+        Object.values(err.errors).forEach((error) => {
+            errorStore.push({
+                path: error.path,
+                message: error.message
+            })
+        });
+
+        message = "MongoDb validation error";
+
     }
 
     else if (err.code === 11000) {
