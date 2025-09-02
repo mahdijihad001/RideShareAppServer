@@ -7,6 +7,6 @@ const userRouter = Router();
 
 
 userRouter.post("/create", requestValidation(createUserZodSchema), userController.createUser);
-
+userRouter.post("/login", userController.lodinUser);
 
 export default userRouter;

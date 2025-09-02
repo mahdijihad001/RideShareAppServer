@@ -4,7 +4,7 @@ import { IActive, Role } from "./user.interfaces";
 
 export const createUserZodSchema = z.object({
     userName: z.string().min(3, "User name must be at lateast 3 characters"),
-    email: z.string().email("Invalid email address"),
+    email: z.string().email("Invalid email address").toLowerCase(),
     password: z.string().min(8, { message: "Password to short. Minimun 8 character long." })
         .regex(/\d/, { message: "Password must be contain at least one number" })
         .regex(/[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/, { message: "Password must be at last one speacil character" })
@@ -26,7 +26,7 @@ export const createUserZodSchema = z.object({
 
 export const updateUserZodSchema = z.object({
     userName: z.string().min(3, "User name must be at lateast 3 characters").optional(),
-    email: z.string().email("Invalid email address").optional(),
+    email: z.string().email("Invalid email address").toLowerCase().optional(),
     password: z.string().min(8, { message: "Password to short. Minimun 8 character long." })
         .regex(/\d/, { message: "Password must be contain at least one number" })
         .regex(/[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/, { message: "Password must be at last one speacil character" })
