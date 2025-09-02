@@ -21,5 +21,5 @@ export interface IUser{
     active: IActive;
     nidNo: string;
     profilePicture?: string;
-    diverLicenseNumber?: string;
+    driverLicenseNumber?: string;
 };

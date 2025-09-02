@@ -14,7 +14,7 @@ export const createUserZodSchema = z.object({
     phone: z.string()
         .regex(/^(?:\+?880|0)(13|14|15|16|17|18|19)[0-9]{8}$/, { message: "Invalid number formate. Please try valid bangladashi number" }),
     role: z.enum([Role.RIDER, Role.DRIVER]),
-    active: z.enum([IActive.ACTIVE, IActive.INACTIVE, IActive.BLOCKED]),
+    active: z.enum([IActive.ACTIVE, IActive.INACTIVE, IActive.BLOCKED]).optional(),
     nidNo: z.string()
         .regex(/^\d{10}$|^\d{13}$|^\d{17}$/, { message: "Invalid NID number. Must be 10, 13, or 17 digits" }),
     driverLicenseNumber: z.string()

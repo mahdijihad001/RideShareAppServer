@@ -39,7 +39,7 @@ const userSchema = new Schema<IUser>({
     profilePicture: {
         type: String
     },
-    diverLicenseNumber: {
+    driverLicenseNumber: {
         type: String
     }
 }, { timestamps: true, versionKey: false });

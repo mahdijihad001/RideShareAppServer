@@ -3,6 +3,7 @@ import cors from "cors";
 import cookieParser from "cookie-parser";
 import { globalErrorHanle } from "./app/middleware/globalErrorHandler";
 import { notFoundRoute } from "./app/middleware/notFoundRoute";
+import moduleRoutes from "./app/route";
 
 const app = express();
 
@@ -14,7 +15,9 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 // Api Route
+moduleRoutes.forEach((route) => app.use(route.path, route.route));
 
+// Server Root Route
 app.get("/", (req: Request, res: Response) => {
     res.status(200).json({ success: true, message: "Ride share app runing successfully" });
 });

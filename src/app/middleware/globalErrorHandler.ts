@@ -8,14 +8,14 @@ export const globalErrorHanle = (err: any, req: Request, res: Response, next: Ne
 
     let stautsCode = 500;
     let message = `Something went worng`;
-    let errorStore = []
+    let errorStore: any = []
 
     if (err instanceof ZodError) {
         const error = err.issues;
 
         error.forEach((issue) => {
             errorStore.push({
-                path: issue.path[issue.path.length - 1],
+                path: issue.path.length > 0 ? issue.path[issue.path.length - 1] : "root",
                 message: issue.message
             })
         })
@@ -53,6 +53,12 @@ export const globalErrorHanle = (err: any, req: Request, res: Response, next: Ne
         message = err.message
     };
 
-    res.status(stautsCode).json({ success: false, message: message, err: envVars.DEV_ENVIRONMENT === "development" ? err : null, stack: envVars.DEV_ENVIRONMENT === "development" ? err.stack : null });
+    res.status(stautsCode).json({
+        success: false,
+        message: message,
+        errors: errorStore,
+        err: envVars.DEV_ENVIRONMENT === "development" ? err : null,
+        stack: envVars.DEV_ENVIRONMENT === "development" ? err.stack : null
+    });
 
 }
