@@ -42,6 +42,10 @@ const userSchema = new Schema<IUser>({
     },
     driverLicenseNumber: {
         type: String
+    },
+    isDeleted: {
+        type: Boolean,
+        default: false
     }
 }, { timestamps: true, versionKey: false });
 

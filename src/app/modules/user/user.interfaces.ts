@@ -22,4 +22,5 @@ export interface IUser{
     nidNo: string;
     profilePicture?: string;
     driverLicenseNumber?: string;
+    isDeleted : boolean
 };

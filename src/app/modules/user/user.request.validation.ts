@@ -43,5 +43,6 @@ export const updateUserZodSchema = z.object({
     driverLicenseNumber: z.string()
         .regex(/^[A-Z]{2}\d{7}$/, { message: "Invalid driver license number. Format: 2 letters + 7 digits, e.g., AB1234567" })
         .optional(),
-    profilePicture: z.string().optional()
+    profilePicture: z.string().optional(),
+    isDeleted: z.boolean().optional()
 });

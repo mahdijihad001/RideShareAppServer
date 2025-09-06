@@ -15,7 +15,7 @@ const createUser = catchAsync(async (req: Request, res: Response, next: NextFunc
 });
 
 
-const lodinUser = catchAsync(async (req: Request, res: Response, next: NextFunction) => {
+const loginUser = catchAsync(async (req: Request, res: Response, next: NextFunction) => {
 
     if (!req.body.email || !req.body.password) {
         throw new AppError(400, "Email & password must be required");
@@ -35,5 +35,5 @@ const lodinUser = catchAsync(async (req: Request, res: Response, next: NextFunct
 
 export const userController = {
     createUser,
-    lodinUser
-}
+    loginUser
+};
