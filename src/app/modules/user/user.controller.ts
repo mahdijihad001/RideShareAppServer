@@ -33,6 +33,10 @@ const loginUser = catchAsync(async (req: Request, res: Response, next: NextFunct
     })
 });
 
+const viewAllUser = catchAsync(async(req : Request , res : Response , next : NextFunction) =>{
+    
+})
+
 export const userController = {
     createUser,
     loginUser
