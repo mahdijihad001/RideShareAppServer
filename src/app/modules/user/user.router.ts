@@ -8,6 +8,6 @@ const userRouter = Router();
 
 
 userRouter.post("/create", requestValidation(createUserZodSchema), userController.createUser);
-userRouter.post("/login", protect() ,userController.loginUser);
+userRouter.post("/login", userController.loginUser);
 
 export default userRouter;
