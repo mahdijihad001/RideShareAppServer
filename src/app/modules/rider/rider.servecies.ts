@@ -26,8 +26,10 @@ const cancleRideRequest = async(id : string) =>{
 
     return update
 
-}
+};
+
 
 export const riderRequestServices = {
-    createRiderRequest
+    createRiderRequest,
+    cancleRideRequest
 }

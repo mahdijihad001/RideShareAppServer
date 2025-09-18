@@ -5,6 +5,7 @@ import { sendResponse } from "../../utils/sendResponse";
 import { RiderRequest } from "./rider.model";
 import { AppError } from "../../utils/AppError";
 import { IStatus } from "./rider.interfaces";
+import { send } from "process";
 
 const createRiderRequest = catchAsync(async(req : Request , res : Response , next : NextFunction) =>{
     const riderId = req.authUser._id;
@@ -28,9 +29,18 @@ const createRiderRequest = catchAsync(async(req : Request , res : Response , nex
 
 const cancleRiderRequest = catchAsync(async(req : Request , res : Response , next : NextFunction) =>{
     const id = req.params.id
-   
+    const result = await riderRequestServices.cancleRideRequest(id as string);
+
+    sendResponse(res , {
+        success : true, 
+        statusCode : 200,
+        message : "Request canceled",
+        data : result
+    })
+
 })
 
 export const riderRequestController ={
-    createRiderRequest
+    createRiderRequest, 
+    cancleRiderRequest
 }
