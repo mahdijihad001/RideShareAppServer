@@ -9,7 +9,7 @@ const riderRequestRouter = Router();
 
 riderRequestRouter.post("/request" ,  requestValidation(createRiderRequestValidation) , protect(Role.RIDER , Role.SUPER_ADMIN , Role.ADMIN) ,riderRequestController.createRiderRequest)
 
-riderRequestRouter.post("/cancaled" , protect(Role.RIDER , Role.ADMIN , Role.SUPER_ADMIN) , riderRequestController.cancleRiderRequest);
+riderRequestRouter.post("/cancaled/:id" , protect(Role.RIDER , Role.ADMIN , Role.SUPER_ADMIN) , riderRequestController.cancleRiderRequest);
 
 
 export default riderRequestRouter;

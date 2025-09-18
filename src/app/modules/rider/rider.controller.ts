@@ -38,7 +38,7 @@ const cancleRiderRequest = catchAsync(async(req : Request , res : Response , nex
         data : result
     })
 
-})
+});
 
 export const riderRequestController ={
     createRiderRequest, 
