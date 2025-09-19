@@ -5,7 +5,8 @@ import { sendResponse } from "../../utils/sendResponse";
 
 const acceptRequest = catchAsync(async(req : Request , res : Response , next : NextFunction) =>{
     const requestId = req.params.id;
-    const result = await driverServices.acceptRequest(requestId as string);
+    const driver = req.authUser._id
+    const result = await driverServices.acceptRequest(requestId as string , driver);
     sendResponse(res , {
         success : true ,
         statusCode : 200,

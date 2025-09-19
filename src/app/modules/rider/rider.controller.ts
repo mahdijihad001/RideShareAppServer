@@ -28,8 +28,9 @@ const createRiderRequest = catchAsync(async(req : Request , res : Response , nex
 });
 
 const cancleRiderRequest = catchAsync(async(req : Request , res : Response , next : NextFunction) =>{
-    const id = req.params.id
-    const result = await riderRequestServices.cancleRideRequest(id as string);
+    const id = req.params.id;
+    const riderId = req.authUser._id;
+    const result = await riderRequestServices.cancleRideRequest(id as string , riderId);
 
     sendResponse(res , {
         success : true, 

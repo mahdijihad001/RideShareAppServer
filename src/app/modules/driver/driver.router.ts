@@ -5,6 +5,6 @@ import { driverController } from "./driver.controller";
 
 const driverRouter = Router();
 
-driverRouter.post("/accept" , protect(Role.DRIVER) , driverController.acceptRequest);
+driverRouter.post("/accept/:id" , protect(Role.DRIVER) , driverController.acceptRequest);
 
 export default driverRouter;

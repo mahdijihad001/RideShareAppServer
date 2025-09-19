@@ -1,3 +1,4 @@
+import driverRouter from "../modules/driver/driver.router";
 import riderRequestRouter from "../modules/rider/rider.router";
 import userRouter from "../modules/user/user.router";
 
@@ -9,6 +10,10 @@ const moduleRoutes = [
     {
         path : "/rider",
         route : riderRequestRouter
+    },
+    {
+        path : "/driver",
+        route : driverRouter
     }
 ];
 
