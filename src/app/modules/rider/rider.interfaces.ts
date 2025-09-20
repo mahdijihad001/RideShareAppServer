@@ -12,13 +12,14 @@ export enum IStatus{
     pickedup = "pickedup",
     in_transit = "in_transit",
     completed = "completed",
-    cancelled = "cancelled"
+    cancelled = "cancelled",
+    rejected = "reject"
 }
 
 export interface IRider{
     _id ? : string,
     rider : Types.ObjectId,
-    driver ?: string,
+    driver ?: Types.ObjectId,
     pickup : ILocation,
     destination : ILocation,
     status: IStatus

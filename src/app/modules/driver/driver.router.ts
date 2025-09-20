@@ -6,5 +6,6 @@ import { driverController } from "./driver.controller";
 const driverRouter = Router();
 
 driverRouter.post("/accept/:id" , protect(Role.DRIVER) , driverController.acceptRequest);
+driverRouter.patch("/status/:id" , protect(Role.DRIVER) , driverController.updateRideStatus);
 
 export default driverRouter;
