@@ -41,7 +41,22 @@ const cancleRiderRequest = catchAsync(async(req : Request , res : Response , nex
 
 });
 
+const getAllRide = catchAsync(async(req : Request , res : Response , next : NextFunction) =>{
+    const query = req.query;
+    const result = await riderRequestServices.getAllRide(query as Record<string , string>);
+    sendResponse(res , {
+        statusCode : 200,
+        success : true ,
+        message : "All Tour retrived successfully!",
+        data : result.allRide,
+        meta : {
+            total : result.totalData
+        }
+    })
+})
+
 export const riderRequestController ={
     createRiderRequest, 
-    cancleRiderRequest
+    cancleRiderRequest,
+    getAllRide
 }

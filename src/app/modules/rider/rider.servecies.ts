@@ -33,8 +33,20 @@ const cancleRideRequest = async (id: string, riderId: Types.ObjectId) => {
 
 };
 
+const getAllRide = async (query: Record<string, string>) => {
+    const searchTerm = query.searchTerm || "";
+    const allRide = await RiderRequest.find({
+        // status : {$regex : "c" , $options : "i"}
+        $or: [
+            { status: { $regex: searchTerm, $options: "1" } }
+        ]
+    });
+    const totalData = await RiderRequest.countDocuments();
+    return { allRide, totalData }
+}
 
 export const riderRequestServices = {
     createRiderRequest,
-    cancleRideRequest
+    cancleRideRequest,
+    getAllRide
 };

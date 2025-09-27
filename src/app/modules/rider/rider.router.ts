@@ -11,5 +11,6 @@ riderRequestRouter.post("/request" ,  requestValidation(createRiderRequestValida
 
 riderRequestRouter.post("/cancaled/:id" , protect(Role.RIDER , Role.ADMIN , Role.SUPER_ADMIN) , riderRequestController.cancleRiderRequest);
 
+riderRequestRouter.get("/" , protect(...Object.values(Role)) ,riderRequestController.getAllRide);
 
 export default riderRequestRouter;

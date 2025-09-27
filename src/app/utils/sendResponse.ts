@@ -10,11 +10,11 @@ interface IData<T> {
     success: boolean;
     statusCode: number;
     message: string;
-    data: T,
-    meta?: IMeta
+    meta?: IMeta;
+    data: T;
 }
 
 
 export const sendResponse = <T>(res: Response, data: IData<T>) => {
-    res.status(data.statusCode).json({ success: data.success, message: data.message, data: data.data, meta: data.meta });
+    res.status(data.statusCode).json({ success: data.success, message: data.message, meta: data.meta , data: data.data});
 }
